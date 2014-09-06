@@ -22,6 +22,10 @@ body {
 	line-height: 1.6em
 }
 
+#h2 {
+	text-align: center
+}
+
 #feature {
 	background-color:#efefef;
 	padding: 10px;
@@ -54,7 +58,7 @@ body {
 	margin: 10px;
 	padding: 5px;
 	font-size: 13pt;
-	font-family:  HElvetica;
+	font-family:  Helvetica;
 }
 
 .column1{
