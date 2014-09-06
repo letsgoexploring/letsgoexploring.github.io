@@ -24,12 +24,10 @@ body {
 
 #paperlist {
 	text-indent: 50px;
-
 }
 
 #middle {
-	text-indent: 50px;
-
+	text-align: center;
 }
 
 #feature {
