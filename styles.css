@@ -47,14 +47,14 @@ body {
 	/*text-shadow: 4px 4px 4px #aaa;*/
 }
 
-/*.onecolumn{
+.onecolumn{
 	background-color:#efefef;
-	width: 270px;
+	width: 940px;
 	float: left;
 	margin: 10px;
 	padding: 5px;
 	font-family:  Sans-Serif;
-}*/
+}
 
 .column1{
 	background-color:#efefef;
