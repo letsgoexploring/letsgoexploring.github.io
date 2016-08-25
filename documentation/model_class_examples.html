@@ -1,0 +1,1057 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The linearsolve.model class &mdash; fredpy 1.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="fredpy 1.1.1 documentation" href="index.html" />
+    <link rel="prev" title="Additional fredpy Functions" href="additional_functions.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>fredpy 1.1.1 documentation</span></a></h1>
+        <h2 class="heading"><span>The linearsolve.model class</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="additional_functions.html">Additional <code class="docutils literal"><span class="pre">fredpy</span></code> Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class^=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import linearsolve as ls
+np.set_printoptions(suppress=True)
+%matplotlib inline
+</pre></div>
+</div>
+</div>
+<div class="section" id="The-linearsolve.model-class">
+<h1>The <code class="docutils literal"><span class="pre">linearsolve.model</span></code> class<a class="headerlink" href="#The-linearsolve.model-class" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal"><span class="pre">linearsolve.model</span></code> class package contains a several functions for
+approximating, solving, and simulating dynamic stochastic general
+equilibrium (DSGE) models. The equilibrium conditions for most DSGE
+models can be expressed as a vector function <span class="math">\(F\)</span>:</p>
+<div class="math">
+\begin{align}
+f(E_t X_{t+1}, X_t, \epsilon_{t+1}) = 0,
+\end{align}</div><p>where 0 is an <span class="math">\(n\times 1\)</span> vector of zeros, <span class="math">\(X_t\)</span> is an
+<span class="math">\(n\times 1\)</span> vector of endogenous variables, and
+<span class="math">\(\epsilon_{t+1}\)</span> is an <span class="math">\(m\times 1\)</span> vector of exogenous
+structural shocks to the model. <span class="math">\(E_tX_{t+1}\)</span> denotes the
+expecation of the <span class="math">\(t+1\)</span> endogenous variables based on the
+information available to decision makers in the model as of time period
+<span class="math">\(t\)</span>.</p>
+<p>The function <span class="math">\(f\)</span> is often nonlinear. Because the values of the
+endogenous variables in period <span class="math">\(t\)</span> depend on the expected future
+values of those variables, it is not in general possible to compute the
+equilibirum of the model by working directly with the function
+<span class="math">\(f\)</span>. Instead it is often convenient to work with a log-linear
+approximation to the equilibrium conditions around a non-stochastic
+steady state. In many cases, the log-linear approximation can be written
+in the following form:</p>
+<div class="math">
+\begin{align}
+A E_t\left[ x_{t+1} \right] &amp; = B x_t + \left[ \begin{array}{c} \epsilon_{t+1} \\ 0 \end{array} \right],
+\end{align}</div><p>where the vector <span class="math">\(x_{t}\)</span> denotes the log deviation of the
+variables in <span class="math">\(X_t\)</span> from their steady state values. The variables
+in <span class="math">\(x_t\)</span> are grouped in a specific way: <span class="math">\(x_t = [s_t; u_t]\)</span>
+where <span class="math">\(s_t\)</span> is an <span class="math">\(n_s \times 1\)</span> vector of predetermined
+(state) variables and <span class="math">\(u_t\)</span> is an <span class="math">\(n_u \times 1\)</span> vector of
+nonpredetermined (forward-looking) variables. <span class="math">\(\epsilon_{t+1}\)</span> is
+an <span class="math">\(n_s\times 1\)</span> vector of i.i.d. shocks to the state variables
+<span class="math">\(s_{t+1}\)</span>. <span class="math">\(\epsilon_{t+1}\)</span> has mean 0 and diagonal
+covariance matrix <span class="math">\(\Sigma\)</span>. The solution to the model is a pair of
+matrices <span class="math">\(F\)</span> and <span class="math">\(P\)</span> such that:</p>
+<div class="math">
+\begin{align}
+u_t  &amp;  = Fs_t\\
+s_{t+1} &amp; = Ps_t + \epsilon_{t+1}.
+\end{align}</div><p>The matrices <span class="math">\(F\)</span> and <span class="math">\(P\)</span> are obtained using the <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0165188999000457">Klein
+(2000)</a>
+solution method which is based on the generalized Schur factorization of
+the marices <span class="math">\(A\)</span> and <span class="math">\(B\)</span>. The solution routine incorporates
+many aspects of his program for Matlab
+<code class="docutils literal"><span class="pre">`solab.m</span></code> &lt;<a class="reference external" href="http://paulklein.ca/newsite/codes/codes.php">http://paulklein.ca/newsite/codes/codes.php</a>&gt;`__</p>
+<p>This package defines a <code class="docutils literal"><span class="pre">linearsolve.model</span></code> class. An instance of the
+<code class="docutils literal"><span class="pre">linearsolve.model</span></code> has the following methods:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">linearsolve.model.compute_ss(guess,method,options)</span></code>: Computes the
+steady state of the nonlinear model.</li>
+<li><code class="docutils literal"><span class="pre">linearsolve.model.set_ss(steady_state)</span></code>: Sets the steady state
+<code class="docutils literal"><span class="pre">.ss</span></code> attribute of the instance.</li>
+<li><code class="docutils literal"><span class="pre">linearsolve.model.log_linear(steady_state,islinear)</span></code>:
+Log-linearizes the nonlinear model and constructs the matrices
+<span class="math">\(A\)</span> and <span class="math">\(B\)</span>.</li>
+<li><code class="docutils literal"><span class="pre">linearsolve.model.klein(a,b)</span></code>: Solves the linear model using
+Klein&#8217;s solution method.</li>
+<li><code class="docutils literal"><span class="pre">impulse(T,t0,shock,percent)</span></code>: Computes impulse responses for
+shocks to each endogenous state variable.</li>
+<li><code class="docutils literal"><span class="pre">stoch_sim(T,dropFirst,covMat,seed)</span></code>: Simulates the model.</li>
+</ol>
+<p>In this notebook, I demonstrate how to use the module to simulate two
+basic business cycle models: an real business cycle (RBC) model and a
+new-Keynesian business cycle model.</p>
+<div class="section" id="Example-1:-A-quick-example.">
+<h2>Example 1: A quick example.<a class="headerlink" href="#Example-1:-A-quick-example." title="Permalink to this headline">¶</a></h2>
+<p>Here I demonstrate how how relatively straightforward it is to
+appoximate, solve, and simulate a DSGE model using <code class="docutils literal"><span class="pre">linearsolve</span></code>. In
+the example that follows, I describe the procedure more carefully.</p>
+<div class="math">
+\begin{align}
+C_t^{-\sigma} &amp; = \beta E_t \left[C_{t+1}^{-\sigma}(\alpha A_{t+1} K_{t+1}^{\alpha-1} + 1 - \delta)\right]\\
+C_t + K_{t+1} &amp; = A_t K_t^{\alpha} + (1-\delta)K_t\\
+\log A_{t+1} &amp; = \rho_a \log A_{t} + \epsilon_{t+1}
+\end{align}</div><p>In the block of code that immediately follows, I input the model, solve
+for the steady state, compute the log-linear approximation of the
+equilibirum conditions, and compute some impulse responses following a
+shock to technology <span class="math">\(A_t\)</span>.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Input model parameters
+parameters = pd.Series()
+parameters[&#39;alpha&#39;]  = .35
+parameters[&#39;beta&#39;]  = 0.99
+parameters[&#39;delta&#39;]   = 0.025
+parameters[&#39;rhoa&#39;] = .9
+parameters[&#39;sigma&#39;] = 1.5
+parameters[&#39;A&#39;] = 1
+
+# Funtion that evaluates the equilibrium conditions
+def equilibrium_equations(variables_forward,variables_current,parameters):
+
+    # Parameters
+    p = parameters
+
+    # Variables
+    fwd = variables_forward
+    cur = variables_current
+
+    # Household Euler equation
+    euler_eqn = p.beta*fwd.c**-p.sigma*(p.alpha*cur.a*fwd.k**(p.alpha-1)+1-p.delta) - cur.c**-p.sigma
+
+    # Goods market clearing
+    market_clearing = cur.c + fwd.k - (1-p.delta)*cur.k - cur.a*cur.k**p.alpha
+
+    # Exogenous technology
+    technology_proc = cur.a**p.rhoa - fwd.a
+
+    # Stack equilibrium conditions into a numpy array
+    return np.array([
+            euler_eqn,
+            market_clearing,
+            technology_proc
+        ])
+
+# Initialize the model
+model = ls.model(equations = equilibrium_equations,
+                 nstates=2,
+                 varNames=[&#39;a&#39;,&#39;k&#39;,&#39;c&#39;],
+                 shockNames=[&#39;eA&#39;,&#39;eK&#39;],
+                 parameters = parameters)
+
+# Compute the steady state numerically
+guess = [1,1,1]
+model.compute_ss(guess)
+
+# model.ss
+
+# Find the log-linear approximation around the non-stochastic steady state
+model.log_linear()
+
+# Solve the model
+model.solve_klein(model.a,model.b)
+
+# Compute impulse responses and plot
+model.impulse(T=41,t0=5,shock=None)
+
+fig = plt.figure(figsize=(12,4))
+ax1 =fig.add_subplot(1,2,1)
+model.irs[&#39;eA&#39;][[&#39;a&#39;,&#39;k&#39;,&#39;c&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True,ax=ax1).legend(loc=&#39;upper right&#39;,ncol=3)
+ax2 =fig.add_subplot(1,2,2)
+model.irs[&#39;eA&#39;][[&#39;eA&#39;,&#39;a&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True,ax=ax2).legend(loc=&#39;upper right&#39;,ncol=2)
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[2]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.legend.Legend at 0x116a90710&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_3_1.png" src="_images/model_class_examples_3_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Example-2:-A-slightly-more-elaborate-model-with-explanation">
+<h2>Example 2: A slightly more elaborate model with explanation<a class="headerlink" href="#Example-2:-A-slightly-more-elaborate-model-with-explanation" title="Permalink to this headline">¶</a></h2>
+<p>Consider the equilibrium conditions for a basic RBC model without labor:</p>
+<div class="math">
+\begin{align}
+C_t^{-\sigma} &amp; = \beta E_t \left[C_{t+1}^{-\sigma}(\alpha A_{t+1} K_{t+1}^{\alpha-1} + 1 - \delta)\right]\\
+Y_t &amp; = A_t K_t^{\alpha}\\
+I_t &amp; = K_{t+1} - (1-\delta)K_t\\
+Y_t &amp; = C_t + I_t\\
+\log A_t &amp; = \rho_a \log A_{t-1} + \epsilon_t
+\end{align}</div><p>In the nonstochastic steady state, we have:</p>
+<div class="math">
+\begin{align}
+K &amp; = \left(\frac{\alpha A}{1/\beta+\delta-1}\right)^{\frac{1}{1-\alpha}}\\
+Y &amp; = AK^{\alpha}\\
+I &amp; = \delta K\\
+C &amp; = Y - I
+\end{align}</div><p>Given values for the parameters <span class="math">\(\beta\)</span>, <span class="math">\(\sigma\)</span>,
+<span class="math">\(\alpha\)</span>, <span class="math">\(\delta\)</span>, and <span class="math">\(A\)</span>, steady state values of
+capital, output, investment, and consumption are easily computed.</p>
+<div class="section" id="Initializing-the-model-in-linearsolve">
+<h3>Initializing the model in <code class="docutils literal"><span class="pre">linearsolve</span></code><a class="headerlink" href="#Initializing-the-model-in-linearsolve" title="Permalink to this headline">¶</a></h3>
+<p>To initialize the model, we need to first set the model&#8217;s parameters. We
+do this by creating a Pandas Series variable called <code class="docutils literal"><span class="pre">parameters</span></code>:</p>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Input model parameters
+parameters = pd.Series()
+parameters[&#39;alpha&#39;]  = .35
+parameters[&#39;beta&#39;]  = 0.99
+parameters[&#39;delta&#39;]   = 0.025
+parameters[&#39;rhoa&#39;] = .9
+parameters[&#39;sigma&#39;] = 1.5
+parameters[&#39;A&#39;] = 1
+</pre></div>
+</div>
+</div>
+<p>Next, we need to define a function that returns the equilibrium
+conditions of the model. The function will take as inputs two vectors:
+one vector of &#8220;current&#8221; variables and another of &#8220;forward-looking&#8221; or
+one-period-ahead variables. The function will return an array that
+represents the equilibirum conditions of the model. We&#8217;ll enter each
+equation with all variables moved to one side of the equals sign. For
+example, here&#8217;s how we&#8217;ll enter the produciton fucntion:</p>
+<p><code class="docutils literal"><span class="pre">production_function</span> <span class="pre">=</span> <span class="pre">technology_current*capital_current**alpha</span> <span class="pre">-</span> <span class="pre">output_curent</span></code></p>
+<p>Here the variable <code class="docutils literal"><span class="pre">production_function</span></code> stores the production function
+equation set equal to zero. We can enter the equations in almost any way
+we want. For example, we could also have entered the production function
+this way:</p>
+<p><code class="docutils literal"><span class="pre">production_function</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">output_curent/technology_current/capital_current**alpha</span></code></p>
+<p>One more thing to consider: the natural log in the equation describing
+the evolution of total factor productivity will create problems for the
+solution routine later on. So rewrite the equation as:</p>
+<div class="math">
+\begin{align}
+A_{t+1} &amp; =  A_{t}^{\rho_a}e^{\epsilon_{t+1}}\\
+\end{align}</div><p>So the complete system of equations that we enter into the program looks
+like:</p>
+<div class="math">
+\begin{align}
+C_t^{-\sigma} &amp; = \beta E_t \left[C_{t+1}^{-\sigma}(\alpha Y_{t+1} /K_{t+1}+ 1 - \delta)\right]\\
+Y_t &amp; = A_t K_t^{\alpha}\\
+I_t &amp; = K_{t+1} - (1-\delta)K_t\\
+Y_t &amp; = C_t + I_t\\
+A_{t+1} &amp; =  A_{t}^{\rho_a}e^{\epsilon_{t+1}}
+\end{align}</div><p>Now let&#8217;s define the function that returns the equilibrium conditions:</p>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>def equilibrium_equations(variables_forward,variables_current,parameters):
+
+    # Parameters
+    p = parameters
+
+    # Variables
+    fwd = variables_forward
+    cur = variables_current
+
+    # Household Euler equation
+    euler_eqn = p.beta*fwd.c**-p.sigma*(p.alpha*fwd.y/fwd.k+1-p.delta) - cur.c**-p.sigma
+
+    # Production function
+    production_fuction =  cur.a*cur.k**p.alpha - cur.y
+
+    # Capital evolution
+    capital_evolution = fwd.k - (1-p.delta)*cur.k - cur.i
+
+    # Goods market clearing
+    market_clearing = cur.c + cur.i - cur.y
+
+    # Exogenous technology
+    technology_proc = cur.a**p.rhoa- fwd.a
+
+    # Stack equilibrium conditions into a numpy array
+    return np.array([
+            euler_eqn,
+            production_fuction,
+            capital_evolution,
+            market_clearing,
+            technology_proc
+        ])
+</pre></div>
+</div>
+</div>
+<p>Notice that inside the function we have to define the variables of the
+model form the elements of the input vectors <code class="docutils literal"><span class="pre">variables_forward</span></code> and
+<code class="docutils literal"><span class="pre">variables_current</span></code>. It is <em>essential</em> that the predetermined or state
+variables are ordered first.</p>
+</div>
+<div class="section" id="Initializing-the-model">
+<h3>Initializing the model<a class="headerlink" href="#Initializing-the-model" title="Permalink to this headline">¶</a></h3>
+<p>To initialize the model, we need to specify the number of state
+variables in the model, the names of the endogenous varaibles in the
+same order used in the <code class="docutils literal"><span class="pre">equilibrium_equations</span></code> function, and the names
+of the exogenous shocks to the model.</p>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Initialize the model
+rbc = ls.model(equations = equilibrium_equations,
+               nstates=2,
+               varNames=[&#39;a&#39;,&#39;k&#39;,&#39;c&#39;,&#39;y&#39;,&#39;i&#39;],
+               shockNames=[&#39;eA&#39;,&#39;eK&#39;],
+               parameters=parameters)
+</pre></div>
+</div>
+</div>
+<p>The solution routine solves the model as if there were a separate
+exogenous shock for each state variable and that&#8217;s why I initialized the
+model with two exogenous shocks <code class="docutils literal"><span class="pre">eA</span></code> and <code class="docutils literal"><span class="pre">eK</span></code> even though the RBC
+model only has one exogenous shock.</p>
+</div>
+<div class="section" id="Steady-state">
+<h3>Steady state<a class="headerlink" href="#Steady-state" title="Permalink to this headline">¶</a></h3>
+<p>Next, we need to compute the nonstochastic steady state of the model.
+The <code class="docutils literal"><span class="pre">.compute_ss</span></code> method can be used to compute the steady state
+numerically. The method&#8217;s default is to use scipy&#8217;s <code class="docutils literal"><span class="pre">fsolve</span></code> function,
+but other scipy root-finding functions can be used: <code class="docutils literal"><span class="pre">root</span></code>,
+<code class="docutils literal"><span class="pre">broyden1</span></code>, and <code class="docutils literal"><span class="pre">broyden2</span></code>. The optional argument <code class="docutils literal"><span class="pre">options</span></code> lets
+the user pass keywords directly to the optimization function. Check out
+the documentation for Scipy&#8217;s nonlinear solvers here:
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html">http://docs.scipy.org/doc/scipy/reference/optimize.html</a></p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Compute the steady state numerically
+guess = [1,1,1,1,1]
+rbc.compute_ss(guess)
+print(rbc.ss)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+a     1.000000
+k    34.398226
+c     2.589794
+y     3.449750
+i     0.859956
+dtype: float64
+</pre></div></div>
+</div>
+<p>Note that the steady state is returned as a Pandas Series.
+Alternatively, you could compute the steady state directly and then sent
+the <code class="docutils literal"><span class="pre">rbc.ss</span></code> attribute:</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Steady state solution
+p = parameters
+K = (p.alpha*p.A/(1/p.beta+p.delta-1))**(1/(1-p.alpha))
+C = p.A*K**p.alpha - p.delta*K
+Y = p.A*K**p.alpha
+I = Y - C
+
+rbc.set_ss([p.A,K,C,Y,I])
+print(rbc.ss)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+a     1.000000
+k    34.398226
+c     2.589794
+y     3.449750
+i     0.859956
+dtype: float64
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Log-linearization-and-solution">
+<h3>Log-linearization and solution<a class="headerlink" href="#Log-linearization-and-solution" title="Permalink to this headline">¶</a></h3>
+<p>Now we use the <code class="docutils literal"><span class="pre">.log_linear</span></code> method to find the log-linear
+appxoximation to the model&#8217;s equilibrium conditions. That is, we&#8217;ll
+transform the nonlinear model into a linear model in which all variables
+are expressed as log-deviations from the steady state. Specifically,
+we&#8217;ll compute the matrices <span class="math">\(A\)</span> and <span class="math">\(B\)</span> that satisfy:</p>
+<div class="math">
+\begin{align}
+A E_t\left[ x_{t+1} \right] &amp; = B x_t + \left[ \begin{array}{c} \epsilon_{t+1} \\ 0 \end{array} \right],
+\end{align}</div><p>where the vector <span class="math">\(x_{t}\)</span> denotes the log deviation of the
+endogenous variables from their steady state values.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Find the log-linear approximation around the non-stochastic steady state
+rbc.log_linear()
+
+print(&#39;The matrix A:\n\n&#39;,np.around(rbc.a,4),&#39;\n\n&#39;)
+print(&#39;The matrix B:\n\n&#39;,np.around(rbc.b,4))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+The matrix A:
+
+ [[  0.      -0.0083  -0.3599   0.0083   0.    ]
+ [  0.       0.       0.       0.       0.    ]
+ [  0.      34.3982   0.       0.       0.    ]
+ [  0.       0.       0.       0.       0.    ]
+ [ -1.       0.       0.       0.       0.    ]]
+
+
+The matrix B:
+
+ [[ -0.      -0.      -0.3599  -0.      -0.    ]
+ [ -3.4497  -1.2074  -0.       3.4497  -0.    ]
+ [ -0.      33.5383  -0.      -0.       0.86  ]
+ [ -0.      -0.      -2.5898   3.4497  -0.86  ]
+ [ -0.9     -0.      -0.      -0.      -0.    ]]
+</pre></div></div>
+</div>
+<p>Finally, we need to obtain the <em>solution</em> to the log-linearized model.
+The solution is a pair of matrices <span class="math">\(F\)</span> and <span class="math">\(P\)</span> that specify:</p>
+<ol class="arabic simple">
+<li>The current values of the non-state variables <span class="math">\(u_{t}\)</span> as a
+linear function of the previous values of the state variables
+<span class="math">\(s_t\)</span>.</li>
+<li>The future values of the state variables <span class="math">\(s_{t+1}\)</span> as a linear
+function of the previous values of the state variables <span class="math">\(s_t\)</span>
+and the future realisation of the exogenous shock process
+<span class="math">\(\epsilon_{t+1}\)</span>.</li>
+</ol>
+<div class="math">
+\begin{align}
+u_t  &amp;  = Fs_t\\
+s_{t+1} &amp; = Ps_t + \epsilon_{t+1}.
+\end{align}</div><p>We use the <code class="docutils literal"><span class="pre">.klein</span></code> method to find the solution.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Solve the model
+rbc.solve_klein(rbc.a,rbc.b)
+
+# Display the output
+print(&#39;The matrix F:\n\n&#39;,np.around(rbc.f,4),&#39;\n\n&#39;)
+print(&#39;The matrix P:\n\n&#39;,np.around(rbc.p,4))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+The matrix F:
+
+ [[ 0.2297  0.513 ]
+ [ 1.      0.35  ]
+ [ 3.3197 -0.1408]]
+
+
+The matrix P:
+
+ [[ 0.9     0.    ]
+ [ 0.083   0.9715]]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Impulse-responses">
+<h3>Impulse responses<a class="headerlink" href="#Impulse-responses" title="Permalink to this headline">¶</a></h3>
+<p>One the model is solved, use the <code class="docutils literal"><span class="pre">.impulse</span></code> method to compute impulse
+responses to exogenous shocks to the state. The method creates the
+<code class="docutils literal"><span class="pre">.irs</span></code> attribute which is a dictionary with keys equal to the names of
+the exogenous shocks and the values are Pandas DataFrames with the
+computed impulse respones. You can supply your own values for the
+shocks, but the default is 0.01 for each exogenous shock.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Compute impulse responses and plot
+rbc.impulse(T=41,t0=1,shock=None,percent=True)
+
+print(&#39;Impulse responses to a 0.01 unit shock to A:\n\n&#39;,rbc.irs[&#39;eA&#39;].head())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<div class="highlight"><pre>
+Impulse responses to a 0.01 unit shock to A:
+
+        a         c   eA         i         k         y
+0  0.000  0.000000  0.0  0.000000  0.000000  0.000000
+1  1.000  0.229718  1.0  3.319739  0.000000  1.000000
+2  0.900  0.249318  0.0  2.976083  0.082993  0.929048
+3  0.810  0.265744  0.0  2.667127  0.155321  0.864362
+4  0.729  0.279348  0.0  2.389390  0.218116  0.805341
+</pre></div></div>
+</div>
+<p>Plotting is easy.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>rbc.irs[&#39;eA&#39;][[&#39;a&#39;,&#39;k&#39;,&#39;c&#39;,&#39;y&#39;,&#39;i&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(loc=&#39;upper right&#39;,ncol=2)
+rbc.irs[&#39;eA&#39;][[&#39;eA&#39;,&#39;a&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(loc=&#39;upper right&#39;,ncol=2)
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[11]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.legend.Legend at 0x116d9f898&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_21_1.png" src="_images/model_class_examples_21_1.png" />
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_21_2.png" src="_images/model_class_examples_21_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Stochastic-simulation">
+<h3>Stochastic simulation<a class="headerlink" href="#Stochastic-simulation" title="Permalink to this headline">¶</a></h3>
+<p>Creating a stochastic simulation of the model is straightforward with
+the <code class="docutils literal"><span class="pre">.stoch_sim</span></code> method. In the following example, I create a 151
+period (including t=0) simulation by first siumlating the model for 251
+periods and then dropping the first 100 values. The variance of the
+shock to <span class="math">\(A_t\)</span> is set to 0.001 and the variance of the shock to
+<span class="math">\(K_t\)</span> is set to zero because there is not capital shock in the
+model. The seed for the numpy random number generator is set to 0.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>rbc.stoch_sim(T=121,dropFirst=100,covMat=np.array([[0.00763**2,0],[0,0]]),seed=0,percent=True)
+rbc.simulated[[&#39;k&#39;,&#39;c&#39;,&#39;y&#39;,&#39;i&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(loc=&#39;upper right&#39;,ncol=4)
+rbc.simulated[[&#39;a&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(ncol=4)
+rbc.simulated[[&#39;eA&#39;,&#39;eK&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(ncol=4)
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[12]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.legend.Legend at 0x117048eb8&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_23_1.png" src="_images/model_class_examples_23_1.png" />
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_23_2.png" src="_images/model_class_examples_23_2.png" />
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_23_3.png" src="_images/model_class_examples_23_3.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Example-3:-A-New-Keynesian-business-cycle-model">
+<h2>Example 3: A New-Keynesian business cycle model<a class="headerlink" href="#Example-3:-A-New-Keynesian-business-cycle-model" title="Permalink to this headline">¶</a></h2>
+<p>Consider the new-Keynesian model from Walsh (2010), chapter 8 expressed
+in log-linear terms:</p>
+<div class="math">
+\begin{align}
+y_t &amp; = E_ty_{t+1} - \sigma^{-1} (i_t - E_t\pi_{t+1}) + g_t\\
+\pi_t &amp; = \beta  E_t\pi_{t+1} + \kappa  y_t + u_t\\
+i_t &amp; = \phi_x  y_t + \phi_{\pi}  \pi_t + v_t\\
+r_t &amp; = i_t - E_t\pi_{t+1}\\
+g_{t+1} &amp; = \rho_g g_{t} + \epsilon_{t+1}^g\\
+u_{t+1} &amp; = \rho_u u_{t} + \epsilon_{t+1}^u\\
+v_{t+1} &amp; = \rho_v v_{t} + \epsilon_{t+1}^v
+\end{align}</div><p>where <span class="math">\(y_t\)</span> is the output gap (log-deviation of output from the
+natural rate), <span class="math">\(\pi_t\)</span> is the quarterly rate of inflation between
+<span class="math">\(t-1\)</span> and <span class="math">\(t\)</span>, <span class="math">\(i_t\)</span> is the nominal interest rate on
+funds moving between period <span class="math">\(t\)</span> and <span class="math">\(t+1\)</span>, <span class="math">\(r_t\)</span> is
+the real interest rate, <span class="math">\(g_t\)</span> is the exogenous component of
+demand, <span class="math">\(u_t\)</span> is an exogenous component of inflation, and
+<span class="math">\(v_t\)</span> is the exogenous component of monetary policy.</p>
+<p>Since the model is already log-linear, there is no need to approximate
+the equilibrium conditions. We&#8217;ll still use the <code class="docutils literal"><span class="pre">.log_linear</span></code> method
+to find the matrices <span class="math">\(A\)</span> and <span class="math">\(B\)</span>, but we&#8217;ll have to set the
+<code class="docutils literal"><span class="pre">islinear</span></code> option to <code class="docutils literal"><span class="pre">True</span></code> to avoid generating an error.</p>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Input model parameters
+beta = 0.99
+sigma= 1
+eta  = 1
+omega= 0.8
+kappa= (sigma+eta)*(1-omega)*(1-beta*omega)/omega
+
+rhor = 0.9
+phipi= 1.5
+phiy = 0
+
+rhog = 0.5
+rhou = 0.5
+rhov = 0.9
+
+Sigma = 0.001*np.eye(3)
+
+# This time we&#39;ll input the model parameters a list of values and we&#39;ll include a list of name strings. And
+# the program will consolidate the information into a Pandas Series. FYI the parameters list is required,
+# but the parameter names is optional. If omitted, the names are set to &#39;parameter 1&#39;, &#39;parameter 2&#39;, etc.
+
+parameters = [beta,sigma,eta,omega,kappa,rhor,phipi,phiy,rhog,rhou,rhov]
+parameterNames = [&#39;beta&#39;,&#39;sigma&#39;,&#39;eta&#39;,&#39;omega&#39;,&#39;kappa&#39;,&#39;rhor&#39;,&#39;phipi&#39;,&#39;phiy&#39;,&#39;rhog&#39;,&#39;rhou&#39;,&#39;rhov&#39;]
+
+def equilibrium_equations(variables_forward,variables_current,parameters):
+
+    # Parameters
+    p = parameters
+
+    # Variables
+    fwd = variables_forward
+    cur = variables_current
+
+    # Exogenous demand
+    g_proc =  p.rhog*cur.g - fwd.g
+
+    # Exogenous inflation
+    u_proc =  p.rhou*cur.u - fwd.u
+
+    # Exogenous monetary policy
+    v_proc =  p.rhov*cur.v - fwd.v
+
+    # Euler equation
+    euler_eqn = fwd.y -1/p.sigma*(cur.i-fwd.pi) + fwd.g - cur.y
+
+    # NK Phillips curve evolution
+    phillips_curve = p.beta*fwd.pi + p.kappa*cur.y + fwd.u - cur.pi
+
+    # interest rate rule
+    interest_rule = p.phiy*cur.y+p.phipi*cur.pi + fwd.v - cur.i
+
+    # Fisher equation
+    fisher_eqn = cur.i - fwd.pi - cur.r
+
+
+    # Stack equilibrium conditions into a numpy array
+    return np.array([
+            g_proc,
+            u_proc,
+            v_proc,
+            euler_eqn,
+            phillips_curve,
+            interest_rule,
+            fisher_eqn
+        ])
+
+# Initialize the nk
+nk = ls.model(equilibrium_equations,
+              nstates=3,
+              varNames=[&#39;g&#39;,&#39;u&#39;,&#39;v&#39;,&#39;i&#39;,&#39;r&#39;,&#39;y&#39;,&#39;pi&#39;],
+              shockNames=[&#39;eG&#39;,&#39;eU&#39;,&#39;eV&#39;],
+              parameters=parameters,
+              parameterNames=parameterNames)
+
+# Set the steady state of the nk
+nk.set_ss([0,0,0,0,0,0,0])
+
+# Find the log-linear approximation around the non-stochastic steady state
+nk.log_linear(islinear=True)
+
+# Solve the nk
+nk.solve_klein(nk.a,nk.b)
+</pre></div>
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span># Compute impulse responses and plot
+nk.impulse(T=11,t0=1,shock=None)
+
+# Create the figure and axes
+fig = plt.figure(figsize=(12,12))
+ax1 = fig.add_subplot(3,1,1)
+ax2 = fig.add_subplot(3,1,2)
+ax3 = fig.add_subplot(3,1,3)
+
+# Plot commands
+nk.irs[&#39;eG&#39;][[&#39;g&#39;,&#39;y&#39;,&#39;i&#39;,&#39;pi&#39;,&#39;r&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True,title=&#39;Demand shock&#39;,ax=ax1).legend(loc=&#39;upper right&#39;,ncol=5)
+nk.irs[&#39;eU&#39;][[&#39;u&#39;,&#39;y&#39;,&#39;i&#39;,&#39;pi&#39;,&#39;r&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True,title=&#39;Inflation shock&#39;,ax=ax2).legend(loc=&#39;upper right&#39;,ncol=5)
+nk.irs[&#39;eV&#39;][[&#39;v&#39;,&#39;y&#39;,&#39;i&#39;,&#39;pi&#39;,&#39;r&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True,title=&#39;Interest rate shock&#39;,ax=ax3).legend(loc=&#39;upper right&#39;,ncol=5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[14]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.legend.Legend at 0x116d90358&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_26_1.png" src="_images/model_class_examples_26_1.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>nk.stoch_sim(T=151,dropFirst=100,covMat=Sigma,seed=0)
+
+# Create the figure and axes
+fig = plt.figure(figsize=(12,8))
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+# Plot commands
+nk.simulated[[&#39;y&#39;,&#39;i&#39;,&#39;pi&#39;,&#39;r&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True,title=&#39;Output, inflation, and interest rates&#39;,ax=ax1).legend(ncol=4)
+nk.simulated[[&#39;g&#39;,&#39;u&#39;,&#39;v&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True,title=&#39;Exogenous demand, inflation, and policy&#39;,ax=ax2).legend(ncol=4,loc=&#39;lower right&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[15]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.legend.Legend at 0x1172e6908&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_27_1.png" src="_images/model_class_examples_27_1.png" />
+</div>
+</div>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [16]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>nk.simulated[[&#39;eG&#39;,&#39;g&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(ncol=2)
+nk.simulated[[&#39;eU&#39;,&#39;u&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(ncol=2)
+nk.simulated[[&#39;eV&#39;,&#39;v&#39;]].plot(lw=&#39;5&#39;,alpha=0.5,grid=True).legend(ncol=2)
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[16]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.legend.Legend at 0x117e0f7f0&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_28_1.png" src="_images/model_class_examples_28_1.png" />
+</div>
+</div>
+<div class="nboutput container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_28_2.png" src="_images/model_class_examples_28_2.png" />
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="container">
+<img alt="_images/model_class_examples_28_3.png" src="_images/model_class_examples_28_3.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="additional_functions.html">Additional <code class="docutils literal"><span class="pre">fredpy</span></code> Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Brian C. Jenkins.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.5.
+    </div>
+  </body>
+</html>
