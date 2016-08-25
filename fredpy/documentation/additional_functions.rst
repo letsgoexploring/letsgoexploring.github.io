@@ -12,7 +12,7 @@ Additional ``fredpy`` Functions
 	:param list date_strings: a list of date strings formated as: 'yyyy-mm-dd'.
  	:return: :py:class:`numpy ndarray`
 
-.. py:function:: divide(series1,series2)
+.. py:function:: fredpy.divide(series1,series2)
 
             Divides the data from ``series1`` by the data from ``series2``.
 
@@ -22,7 +22,7 @@ Additional ``fredpy`` Functions
             :type series2: fredpy.series
             :return: :py:class:`fredpy.series`
 
-.. py:function:: plus(series1,series2)
+.. py:function:: fredpy.plus(series1,series2)
 
             Adds the data from ``series1`` to the data from ``series2``.
 
@@ -47,7 +47,7 @@ Additional ``fredpy`` Functions
     :param float alpha: Transparency of the recession bars. Must be between 0 and 1. Default: 0.7.
     :returns:
 
-.. py:function:: minus(series1,series2)
+.. py:function:: fredpy.minus(series1,series2)
 
             Subtracts the data from ``series2`` from the data from ``series1``.
 
@@ -57,7 +57,7 @@ Additional ``fredpy`` Functions
             :type series2: fredpy.series
             :return: :py:class:`fredpy.series`
 
-.. py:function:: times(series1,series2)
+.. py:function:: fredpy.times(series1,series2)
 
             Multiplies the data from ``series1`` with the data from ``series2``.
 
