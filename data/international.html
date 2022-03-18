@@ -52,11 +52,11 @@
   <div class="row">
     <div class="large-6 columns">
       <h3>Real GDP Per Capita Data</h3>
-      <p>The following link points to a csv file containing data on real GDP per capita for about 107 countries from 1960 to the present:
+      <p>The following link points to a csv file containing data on real GDP per capita for a little over 100 countries from 1960 to the present:
         <ul>
-          <li><a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/cross-country-income/csv/cross_country_income_per_capita.csv">GDP per capita  (constant US 2005 PPP $, levels)</a></li>
+          <li><a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/cross-country-production/csv/cross_country_gdp_per_capita.csv">GDP per capita  (constant US $ PPP, levels)</a></li>
         </ul>
-        GDP per capita data is in terms of 2005 US dollars at purchasing power parity. I obtained the data from the <a href="https://www.rug.nl/ggdc/productivity/pwt/"> Penn World Table</a> and included only countries that had data available for each year starting in 1960. The Python code used to construct the datasets and the figure is available from this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
+        GDP per capita data is in terms of constant year US dollars at purchasing power parity. I obtained the data from the <a href="https://www.rug.nl/ggdc/productivity/pwt/"> Penn World Table</a> and included only countries that had data available for each year starting in 1960. The Python code used to construct the datasets and the figure is available from this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
       </p>
     </div>
 
@@ -64,9 +64,9 @@
     <div class="large-6 columns">
       <figure align:"center">
         <figcaption>
-          <strong>Figure:</strong> Average annual growth rates of real GDP per capita from 1960 to 2013 against GDP per capita in 1960.
+          <strong>Figure:</strong> Average annual growth rates of real GDP per capita from 1960 to the most recent available against GDP per capita in 1960.
         </figcaption>
-        <a href="https://github.com/letsgoexploring/economic-data/raw/master/cross-country-income/png/fig_GDP_GDP_Growth_site.png"><img src="https://github.com/letsgoexploring/economic-data/raw/master/cross-country-income/png/fig_GDP_GDP_Growth_site.png"/></a>
+        <a href="https://github.com/letsgoexploring/economic-data/raw/master/cross-country-production/png/fig_GDP_GDP_Growth_site.png"><img src="https://github.com/letsgoexploring/economic-data/raw/master/cross-country-production/png/fig_GDP_GDP_Growth_site.png"/></a>
         <small>Source: <a href="https://www.rug.nl/ggdc/productivity/pwt/"> Penn World Table.</a></small>
       </figure>
     </div>
@@ -76,37 +76,38 @@
   <div class="row">
     <div class="large-6 columns">
       <h3>Money Growth and Inflation</h3>
-      <p>The following links are to data files containing long-run average rates of money (M1) growth, CPI inflation, and real GDP growth for 178 countries:
+      <p>The following links are to data files that can be used to assess the quantity theory of money. The first contains only long-run average rates of money growth, inflation, and real GDP growth. The second contains the same variables plus average currency depreciation and lending rates.
         <ul>
-          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data.csv">All income levels</a></li>
-          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data_H.csv">High-income countries</a></li>
-          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data_M.csv">Middle-income countries</a></li>
-          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data_L.csv">Low-income countries</a></li>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data.csv">Money growth, inflation, real GDP</a></li>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_open_data.csv">Money growth, inflation, real GDP, exchange rate depreciation, lending rate</a></li>
         </ul>
       </p>
-      <p>The data files were constructed using data from the <a href="https://data.worldbank.org/data-catalog/world-development-indicators"> World Bank's World Development Indicators.</a> The money supply measure is M1, the price level is the consumer price index, and national income is real GDP in constant 2005 US dollars. For each country with at least 10 overlapping continuous years of data for each series, the average annual growth rates in money, prices, and real GDP were computed. Programs for computing the datasets is available in this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
     </div>
 
 
     <div class="large-6 columns">
       <figure align:"center">
           <figcaption>
-        <strong>Figure:</strong> Long-run average money (M1) growth and CPI inflation for about 178 countries. Blue circles indicate high-income, green squares indicate middle-income, and red triangles are low-income.
+        <strong>Figure:</strong> Long-run average CPI inflation against average money growth for about 160 countries.
         </figcaption>
-          <a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/png/fig_money_inflation.png"><img src="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/png/fig_money_inflation.png"/></a>
+          <a href="https://github.com/letsgoexploring/economic-data/raw/master/quantity-theory/png/money_inflation_by_income.png"><img src="https://github.com/letsgoexploring/economic-data/raw/master/quantity-theory/png/money_inflation_by_income.png"/></a>
           <small>Source: <a href="https://data.worldbank.org/data-catalog/world-development-indicators"> World Bank's World Development Indicators.</a></small>
         </figure>
     </div>
 
     <div class="large-12 columns">
 
-        <p>The World Bank classifies countries by income level. The World Bank classified countries in 2015 based on GNI per capita in 2013:
+        <p>The data files were constructed using data from the <a href="https://data.worldbank.org/data-catalog/world-development-indicators"> World Bank's World Development Indicators.</a> The money supply measure is M2, the price level is the consumer price index, and national income is real GDP in constant year US dollars. For each country with at least 10 overlapping continuous years of data for each series, the average annual growth rates in money, prices, and real GDP were computed. The data sets have different numbers of observations because exchange rate and interest data is available for fewer countries.
+      </p>
+
+        <p>The World Bank classifies countries by income level. As of July 2021, the World Bank classified countries based on GNI per capita in 2020 according to the following thresholds:
           <ul>
             <li><strong>low-income</strong>: GNI per capita less than $1,045.</li>
-            <li><strong>middle-income</strong>: GNI per capita greater than or equal $1,045 and less than $12,746.</li>
-            <li><strong>high-income</strong>: GNI per capita greater than or equal $12,746.</li>
+            <li><strong>middle-income</strong>: GNI per capita greater than or equal $1,045 and less than $12,695.</li>
+            <li><strong>high-income</strong>: GNI per capita greater than or equal $12,695.</li>
           </ul>
         </p>
+        <p>Programs for generating the data sets are available in this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
 
     </div>
 
