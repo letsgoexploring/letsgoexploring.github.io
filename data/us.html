@@ -1,0 +1,134 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="favicon/mstile-310x310.png" />
+
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>US Macroeconomic Datasets</title>
+
+    <link rel="stylesheet" href="../css/foundation.css" />
+
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="large-3 columns">
+      </div>
+      <div class="large-9 columns">
+        <ul class="button-group right">
+          <li><a href="https://www.briancjenkins.com" class="button">Brian C Jenkins</a></li>
+          <li><a href="https://www.briancjenkins.com/teaching.html" class="button">Teaching</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>US Macroeconomic Datasets</h1>
+        <hr>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Production Data</h3>
+      <p>The following are links to csv files containing selected data from the US <a href="https://www.bea.gov/index.htm
+">National Income and Product and Product Accounts (NIPA)</a> and a constructed measure of the US capital stock:
+        <ul>
+          <li>Annual: <a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/us-production/csv/US_Production_A_Data.csv">levels</a> and <a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/us-production/csv/US_Production_A_Data_Growth_Rates.csv">growth rates</a></li>
+          <li>Quarterly: <a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/us-production/csv/US_Production_Q_Data.csv">levels</a> and <a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/us-production/csv/US_Production_Q_Data_Growth_Rates.csv">growth rates</a></li>
+        </ul>
+        The series included from the NIPA are: GDP, consumption, private domestic investment, government consumption, exports, imports, net exports, and total labor hours. The labor statistic is in terms of billions of hours per year and all other series are in terms of constant billions of US dollars.
+      </p>
+    </div>
+
+    <div class="large-6 columns">
+      <figure align:"center">
+        <figcaption>
+          <strong>Figure:</strong> Annual growth rates in real GDP, TFP, labor hours, and the capital stock for the US from 1949.
+        </figcaption>
+        <a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/us-production/png/fig_US_Production_A_site.png"><img src="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/us-production/png/fig_US_Production_A_site.png"/></a>
+        <small>Source: <a href="https://research.stlouisfed.org/fred2/"> Federal Reserve Economic Data - FRED.</a></small>
+      </figure>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class ="large-12 columns">
+      <p>The data also use contain a measure of the US capital stock also in terms of billions of constant dollars. I constructed the capital stock series from the GDP and private domestic investment series using the perpetual inventory method (see <a href="https://www.jstor.org/stable/2586948">Hall and Jones (1999)</a> or <a href="https://users.econ.umn.edu/~tkehoe/classes/GrowthAccountingNotes.pdf">Timothy Kehoe's notes</a> for a description of the method). The Python code used to construct the datasets is available from this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
+    </div>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Inflation Forecasts</h3>
+      <p>Inflation expectations have an important role in macroeconomic theory but most people do not have the expertise to form precise mathematical expectations of future inflation rates.</p>
+
+      <p>Below is a link to a dataset containing historical forecasts of the one-year ahead inflation rate:
+        <ul>
+          <li><a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/refs/heads/main/inflation-forecasts-and-interest-rates/csv/real_rate_data_quarterly.csv">Forecasted and Actual Inflation, the 1-year T-Bill rate</a></li>
+        </ul>
+        The data are annual from 1970 and contains the forecast one-year ahead GDP deflator inflation rate, the actual one-year ahead GDP deflator inflation rate, and the one-year T-Bill rate.
+      </p>
+
+    </div>
+
+    <div class="large-6 columns">
+      <figure align:"center">
+        <figcaption>
+          <strong>Figure:</strong> Forecast and actual one-year ahead annual inflation rate for the US.
+        </figcaption>
+        <a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/inflation-forecasts-and-interest-rates/png/fig_US_Inflation_Forecast_site.png"><img src="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/inflation-forecasts-and-interest-rates/png/fig_US_Inflation_Forecast_site.png"/></a>
+        <small>Source: <a href="https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters/"> Federal Reserve Bank of Philadelphia Survey of Professional Forecasters.</a></small>
+      </figure>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class ="large-12 columns">
+      <p>I constructed the dataset using data from the <a href="https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters/"> Federal Reserve Bank of Philadelphia Survey of Professional Forecasters</a> and <a href="https://research.stlouisfed.org/fred2/"> Federal Reserve Economic Data - FRED</a>. I used the median (as opposed to the mean) forecast values reported. Find the code used to generate the dataset in this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
+    </div>
+  </div>
+ 
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-6 columns">
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="https://www.briancjenkins.com/">Brian C Jenkins</a></li>
+            <li><a href="https://www.economics.uci.edu/">Department of Economics</a></li>
+            <li><a href="https://uci.edu/">UC Irvine</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+  </body>
+</html>

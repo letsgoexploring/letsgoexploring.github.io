@@ -1,0 +1,116 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="favicon/mstile-310x310.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Money Growth and Inflation</title>
+
+    <link rel="stylesheet" href="../css/foundation.css" />
+
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="large-3 columns">
+      </div>
+      <div class="large-9 columns">
+        <ul class="button-group right">
+          <li><a href="https://www.briancjenkins.com" class="button">Brian C Jenkins</a></li>
+          <li><a href="https://www.briancjenkins.com/teaching.html" class="button">Teaching</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>Money Growth and Inflation</h1>
+        <hr>
+      </div>
+    </div>
+ 
+
+  <div class="row">
+    <div class="large-5 columns">
+      <p>The quantity theory of money is the proposition that over long time horizons, the level of prices in a country tends to be proportional to the quantity of money in circulation in that country.</p>
+
+      <p>An implication of the theory is that countries with higher inflation rates will be those that have higher rates of money growth. Inspection of the figure to the right suggests that this is the case.</p>
+
+      <p>The quantity theory of money is one of the most successful theories in economics in terms of its simplicity and predictive power. Accordingly, it has become a fundamental principle of macroeconomics.</p>
+
+      <p>The following links are to data files containing long-run average rates of money (M1) growth, CPI inflation, and real GDP growth for 178 countries:
+        <ul>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data.csv">All income levels</a></li>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data_H.csv">High-income countries</a></li>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data_M.csv">Middle-income countries</a></li>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data_L.csv">Low-income countries</a></li>
+        </ul>
+      </p>
+
+
+    </div>
+    <div class="large-7 columns">
+        <figure align:"center">
+          <figcaption>
+        <strong>Figure:</strong> Long-run average money (M1) growth and CPI inflation for 178 countries. Blue circles indicate high-income countries, green squares indicate middle-income countries, and red triangles are low-income countries. The solid line is the 45&deg line with y-intercept equal to the minus average real GDP growth of the all countries in the sample. <small>Source: <a href="https://data.worldbank.org/data-catalog/world-development-indicators"> World Bank's World Development Indicators.</a></small>
+        </figcaption>
+          <a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/png/fig_money_inflation.png"><img src="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/png/fig_money_inflation.png"/></a>
+        </figure>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <h3>About the Data</h3>
+      <p>The data files above were constructed using data from the <a href="https://data.worldbank.org/data-catalog/world-development-indicators"> World Bank's World Development Indicators.</a> The money supply measure is M1, the price level is the consumer price index, and national income is real GDP in constant 2005 US dollars. For each country with at least 10 overlapping continuous years of data for each series, the average annual growth rates in money, prices, and real GDP were computed. The python program for computing the datasets is available in this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
+      <p>The World Bank classifies countries by income level. The World Bank classified countries in 2015 based on GNI per capita in 2013:
+        <ul>
+          <li><strong>low-income</strong>: GNI per capita less than $1,045.</li>
+          <li><strong>middle-income</strong>: GNI per capita greater than or equal $1,045 and less than $12,746.</li>
+          <li><strong>high-income</strong>: GNI per capita greater than or equal $12,746.</li>
+        </ul>
+      </p>
+      <p>The data on this site are updated automatically as new data becomes available. Please send feedback to me at <a href="mailto:bcjenkin@uci.edu">bcjenkin@uci.edu</a>.</p>
+    </div>
+  </div> 
+ 
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-6 columns">
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="https://www.briancjenkins.com/">Brian C Jenkins</a></li>
+            <li><a href="https://www.economics.uci.edu/">Department of Economics</a></li>
+            <li><a href="https://uci.edu/">UC Irvine</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+  </body>
+</html>

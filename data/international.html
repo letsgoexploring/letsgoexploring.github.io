@@ -1,0 +1,137 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="favicon/mstile-310x310.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>International Macroeconomic Datasets</title>
+
+    <link rel="stylesheet" href="../css/foundation.css" />
+
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="large-3 columns">
+      </div>
+      <div class="large-9 columns">
+        <ul class="button-group right">
+          <li><a href="https://www.briancjenkins.com" class="button">Brian C Jenkins</a></li>
+          <li><a href="https://www.briancjenkins.com/teaching.html" class="button">Teaching</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>International Macroeconomic Datasets</h1>
+        <hr>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Real GDP Per Capita Data</h3>
+      <p>The following link points to a csv file containing data on real GDP per capita for a little over 100 countries from 1960 to the present:
+        <ul>
+          <li><a href ="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/cross-country-production/csv/cross_country_gdp_per_capita.csv">GDP per capita  (constant US $ PPP, levels)</a></li>
+        </ul>
+        GDP per capita data is in terms of constant year US dollars at purchasing power parity. I obtained the data from the <a href="https://www.rug.nl/ggdc/productivity/pwt/"> Penn World Table</a> and included only countries that had data available for each year starting in 1960. The Python code used to construct the datasets and the figure is available from this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
+      </p>
+    </div>
+
+
+    <div class="large-6 columns">
+      <figure align:"center">
+        <figcaption>
+          <strong>Figure:</strong> Average annual growth rates of real GDP per capita from 1960 to the most recent available against GDP per capita in 1960.
+        </figcaption>
+        <a href="https://github.com/letsgoexploring/economic-data/raw/master/cross-country-production/png/fig_GDP_GDP_Growth_site.png"><img src="https://github.com/letsgoexploring/economic-data/raw/master/cross-country-production/png/fig_GDP_GDP_Growth_site.png"/></a>
+        <small>Source: <a href="https://www.rug.nl/ggdc/productivity/pwt/"> Penn World Table.</a></small>
+      </figure>
+    </div>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Money Growth and Inflation</h3>
+      <p>The following links are to data files that can be used to assess the quantity theory of money. The first contains only long-run average rates of money growth, inflation, and real GDP growth. The second contains the same variables plus average currency depreciation and lending rates.
+        <ul>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_data.csv">Money growth, inflation, real GDP</a></li>
+          <li><a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/quantity-theory/csv/quantity_theory_open_data.csv">Money growth, inflation, real GDP, exchange rate depreciation, lending rate</a></li>
+        </ul>
+      </p>
+    </div>
+
+
+    <div class="large-6 columns">
+      <figure align:"center">
+          <figcaption>
+        <strong>Figure:</strong> Long-run average CPI inflation against average money growth for about 160 countries.
+        </figcaption>
+          <a href="https://github.com/letsgoexploring/economic-data/raw/master/quantity-theory/png/money_inflation_by_income.png"><img src="https://github.com/letsgoexploring/economic-data/raw/master/quantity-theory/png/money_inflation_by_income.png"/></a>
+          <small>Source: <a href="https://data.worldbank.org/data-catalog/world-development-indicators"> World Bank's World Development Indicators.</a></small>
+        </figure>
+    </div>
+
+    <div class="large-12 columns">
+
+        <p>The data files were constructed using data from the <a href="https://data.worldbank.org/data-catalog/world-development-indicators"> World Bank's World Development Indicators.</a> The money supply measure is M2, the price level is the consumer price index, and national income is real GDP in constant year US dollars. For each country with at least 10 overlapping continuous years of data for each series, the average annual growth rates in money, prices, and real GDP were computed. The data sets have different numbers of observations because exchange rate and interest data is available for fewer countries.
+      </p>
+
+        <p>The World Bank classifies countries by income level. As of July 2021, the World Bank classified countries based on GNI per capita in 2020 according to the following thresholds:
+          <ul>
+            <li><strong>low-income</strong>: GNI per capita less than $1,045.</li>
+            <li><strong>middle-income</strong>: GNI per capita greater than or equal $1,045 and less than $12,695.</li>
+            <li><strong>high-income</strong>: GNI per capita greater than or equal $12,695.</li>
+          </ul>
+        </p>
+        <p>Programs for generating the data sets are available in this <a href="https://github.com/letsgoexploring/economic-data">Github repository</a>.</p>
+
+    </div>
+
+
+
+  </div>
+
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-6 columns">
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="https://www.briancjenkins.com/">Brian C Jenkins</a></li>
+            <li><a href="https://www.economics.uci.edu/">Department of Economics</a></li>
+            <li><a href="https://uci.edu/">UC Irvine</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+  </body>
+</html>
